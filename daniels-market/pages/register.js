@@ -50,7 +50,6 @@ export default function Register() {
       dispatch({ type: "USER_LOGIN", payload: data });
       jsCookie.set("userInfo", JSON.stringify(data));
       router.push(redirect || "/");
-      alert("success login");
     } catch (err) {
       enqueueSnackbar(
         err.response.data ? err.response.data.message : err.message,
@@ -167,7 +166,7 @@ export default function Register() {
                   fullWidth
                   id="confirmPassword"
                   label="Confirm Password"
-                  inputProps={{ type: "confirmPassword" }}
+                  inputProps={{ type: "password" }}
                   error={Boolean(errors.confirmPassword)}
                   helperText={
                     errors.confirmPassword
