@@ -10,6 +10,7 @@ import React, { useContext, useEffect } from "react";
 import { Store } from "../utils/Store";
 import Layout from "../components/Layout";
 import useStyles from "../utils/styles";
+import { getError } from "../utils/error";
 import NextLink from "next/link";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -51,10 +52,7 @@ export default function Register() {
       jsCookie.set("userInfo", JSON.stringify(data));
       router.push(redirect || "/");
     } catch (err) {
-      enqueueSnackbar(
-        err.response.data ? err.response.data.message : err.message,
-        { variant: "error" }
-      );
+      enqueueSnackbar(getError(err), { variant: "error" });
     }
   };
   return (
